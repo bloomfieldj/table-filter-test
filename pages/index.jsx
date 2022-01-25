@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { styled } from '../stitches.config'
 import StitchesLogo from '../components/StitchesLogo'
-
+import Filter from '../components/Filter'
 const Box = styled('div', {})
 
 const Text = styled('p', {
@@ -38,15 +38,12 @@ export default function Home() {
   return (
     <Box css={{ paddingY: '$6' }}>
       <Head>
-        <title>Use Stitches with Next.js</title>
+        <title>Table Filter</title>
       </Head>
       <Container size={{ '@initial': '1', '@bp1': '2' }}>
         <StitchesLogo />
-        <Text as="h1">Hello, from Stitches.</Text>
-        <Text>
-          For full documentation, visit{' '}
-          <Link href="https://stitches.dev">stitches.dev</Link>.
-        </Text>
+        <Text as="h1">Filtering a Table with React.</Text>
+      <Filter/>
       </Container>
     </Box>
   )
