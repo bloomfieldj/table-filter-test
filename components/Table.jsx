@@ -1,10 +1,18 @@
 import { useEffect, useState } from 'react'
+import SelectSearch, {fuzzySearch} from 'react-select-search'
 import {db} from '../lib/db'
-const entry = {"id":1,"location":"Song’ao","min_age":5,"max_age":14,"gender":"Male"}
+
+const locations = db.map( entry => (
+    {
+        "name" :entry.location,
+        "value": entry.location
+    }
+))
 
 
 export default function Table(){
-    const [location, setLocation] = useState("Guadalupe")
+    const [location, setLocation] = useState()
+    const [age, setAge] = useState()
     
 
     
@@ -16,6 +24,44 @@ export default function Table(){
     return (
         <>
           <h1>My Table </h1>
+          <table>
+              <tr>
+                <th>
+                    My Location
+                </th>
+                <th>
+                    My Age
+                </th>
+                <th>
+                    My Gender
+                </th>
+              </tr>
+              <tr>
+                  <td>
+                  <SelectSearch
+                      value={location}
+                      onChange={setLocation}
+                      placeholder='Select your location'
+                      options = {locations}
+                      search
+                      filterOptions={fuzzySearch}                      
+                      />
+                  </td>
+                  <td>
+                  <SelectSearch
+                      value={age}
+                      onChange={setAge}
+                      placeholder='Select your age'
+                      options = {ages}
+                      search
+                      filterOptions={fuzzySearch}                      
+                      />
+                  </td>
+              </tr>
+
+          </table>
+
+
           <table>
               <tr>
                   <th>
