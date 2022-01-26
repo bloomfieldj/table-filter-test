@@ -9,6 +9,10 @@ const locations = db.map( entry => (
     }
 ))
 
+const ages = [
+   {name: "6", value : 6},
+   {name: "10", value : 10}
+]
 
 export default function Table(){
     const [location, setLocation] = useState()
@@ -25,44 +29,49 @@ export default function Table(){
         <>
           <h1>My Table </h1>
           <table>
-              <tr>
-                <th>
-                    My Location
-                </th>
-                <th>
-                    My Age
-                </th>
-                <th>
-                    My Gender
-                </th>
-              </tr>
-              <tr>
-                  <td>
-                  <SelectSearch
-                      value={location}
-                      onChange={setLocation}
-                      placeholder='Select your location'
-                      options = {locations}
-                      search
-                      filterOptions={fuzzySearch}                      
-                      />
-                  </td>
-                  <td>
-                  <SelectSearch
-                      value={age}
-                      onChange={setAge}
-                      placeholder='Select your age'
-                      options = {ages}
-                      search
-                      filterOptions={fuzzySearch}                      
-                      />
-                  </td>
-              </tr>
+              <thead>
+                <tr>
+                    <th>
+                        My Location
+                    </th>
+                    <th>
+                        My Age
+                    </th>
+                    <th>
+                        My Gender
+                    </th>
+                    </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td>
+                    <SelectSearch
+                        value={location}
+                        onChange={setLocation}
+                        placeholder='Select your location'
+                        options = {locations}
+                        search
+                        filterOptions={fuzzySearch}                      
+                        />
+                    </td>
+                    <td>
+                    <SelectSearch
+                        value={age}
+                        onChange={setAge}
+                        placeholder='Select your age'
+                        options = {ages}
+                        search
+                        filterOptions={fuzzySearch}                      
+                        />
+                    </td>
+                </tr>
+            </tbody>
 
           </table>
 
 
           <table>
+              <thead>
               <tr>
                   <th>
                     id
@@ -77,8 +86,11 @@ export default function Table(){
                       Gender
                   </th>
               </tr>
+              </thead>
+              <tbody>
+
             {database.map( (entry) => (
-               <tr key={entry.id}>
+                <tr key={entry.id}>
                 <td>
                     {entry.id}
                 </td>
@@ -93,6 +105,7 @@ export default function Table(){
                 </td>
                </tr>
                ))} 
+               </tbody>
             </table>
         </>
     )
