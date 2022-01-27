@@ -7,14 +7,20 @@ import React from 'react'
        {
          org: 'Org1',
          location: 'Loc1',
+         ages: '5 to 7',
+         dates: "March 2022"
        },
        {
          org: 'Org2',
          location: 'Loc2',
+         ages: '8 to 9',
+         dates: "March 2022"
        },
        {
          org: 'Org3',
          location: 'Loc3',
+         ages: '10 to 12',
+         dates: "March 2022"
        },
      ],
      []
@@ -22,14 +28,34 @@ import React from 'react'
  
    const columns = React.useMemo(
      () => [
-       {
-         Header: 'Organization',
-         accessor: 'org', // accessor is the "key" in the data
-       },
-       {
-         Header: 'Location',
-         accessor: 'location',
-       },
+        {
+        Header: 'Organization',
+        accessor: 'org', // accessor is the "key" in the data
+        },
+    {
+        Header: 'Description',
+        accessor: 'description',
+    },
+    {
+        Header: 'Location',
+        accessor: 'location',
+    },
+    {
+        Header: 'Ages',
+        accessor: 'ages',
+    },
+    {
+        Header: 'Dates',
+        accessor: 'dates',
+    },
+    {
+        Header: 'Deadline',
+        accessor: 'deadline',
+    },
+    {
+        Header: 'Register',
+        accessor: 'link',
+    },
      ],
      []
    )
@@ -43,19 +69,13 @@ import React from 'react'
    } = useTable({ columns, data })
  
    return (
-     <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
+     <table {...getTableProps()}>
        <thead>
          {headerGroups.map(headerGroup => (
            <tr {...headerGroup.getHeaderGroupProps()}>
              {headerGroup.headers.map(column => (
                <th
                  {...column.getHeaderProps()}
-                 style={{
-                   borderBottom: 'solid 3px red',
-                   background: 'aliceblue',
-                   color: 'black',
-                   fontWeight: 'bold',
-                 }}
                >
                  {column.render('Header')}
                </th>
@@ -72,11 +92,6 @@ import React from 'react'
                  return (
                    <td
                      {...cell.getCellProps()}
-                     style={{
-                       padding: '10px',
-                       border: 'solid 1px gray',
-                       background: 'papayawhip',
-                     }}
                    >
                      {cell.render('Cell')}
                    </td>
