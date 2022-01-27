@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { styled } from '../stitches.config'
 import StitchesLogo from '../components/StitchesLogo'
-import Table from '../components/Table'
+import Table2 from '../components/Table2'
 
 const Box = styled('div', {})
 
@@ -43,7 +43,7 @@ export default function Home() {
       </Head>
       <Container size={{ '@initial': '1', '@bp1': '2' }}>
         <Text as="h1">Filtering a Table with React.</Text>
-        <Table />
+        <Table2 />
       </Container>
     </Box>
   )
